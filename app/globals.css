@@ -1,0 +1,270 @@
+:root {
+  --bg-1: #f4f6fb;
+  --bg-2: #eaf0fc;
+  --surface: #ffffff;
+  --surface-2: #f7f9fd;
+  --surface-3: #eef2fa;
+  --border: #e4e9f2;
+  --border-strong: #d3dbe8;
+  --text: #1a2233;
+  --text-dim: #5c6781;
+  --text-faint: #8a93a8;
+
+  --brand: #4f46e5;
+  --brand-2: #7c3aed;
+  --brand-soft: #eef0fe;
+  --brand-glow: rgba(79, 70, 229, 0.28);
+
+  --free: #ffffff;
+  --free-border: #e4e9f2;
+  --partial: #b45309;
+  --partial-bg: #fff5e6;
+  --partial-border: #fcd9a3;
+  --full: #15803d;
+  --full-bg: #e9f9ef;
+  --full-border: #b6ebc7;
+  --danger: #dc2626;
+  --danger-bg: #fdecec;
+  --danger-border: #f6b9b9;
+
+  --radius: 18px;
+  --radius-sm: 12px;
+  --shadow: 0 6px 22px -10px rgba(40, 55, 90, 0.18);
+  --shadow-md: 0 12px 34px -12px rgba(40, 55, 90, 0.22);
+  --shadow-lg: 0 28px 70px -22px rgba(40, 55, 90, 0.4);
+}
+
+* { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; }
+/* Hard guard: nothing should make the whole page scroll sideways. Tables that
+   need extra width scroll inside their own .table-wrap, not the page. */
+html, body { max-width: 100%; overflow-x: hidden; }
+
+body {
+  font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
+  color: var(--text);
+  background:
+    radial-gradient(1100px 540px at 88% -8%, rgba(124, 58, 237, 0.1), transparent 60%),
+    radial-gradient(900px 500px at -8% 6%, rgba(79, 70, 229, 0.1), transparent 58%),
+    linear-gradient(180deg, var(--bg-1), var(--bg-2));
+  background-attachment: fixed;
+  min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+  letter-spacing: -0.01em;
+}
+
+/* ---------- layout ---------- */
+.shell { max-width: 1120px; margin: 0 auto; padding: 32px 24px 80px; }
+
+.topbar { display: flex; justify-content: space-between; align-items: center; gap: 16px; margin-bottom: 26px; }
+
+.brand { display: flex; align-items: center; gap: 14px; }
+.brand-mark {
+  width: 48px; height: 48px; border-radius: 15px;
+  display: grid; place-items: center; font-size: 23px;
+  background: linear-gradient(135deg, var(--brand), var(--brand-2));
+  box-shadow: 0 10px 24px -6px var(--brand-glow);
+}
+.brand h1 { margin: 0; font-size: 21px; font-weight: 750; letter-spacing: -0.02em; }
+.brand .sub { margin: 3px 0 0; font-size: 13px; color: var(--text-dim); }
+
+/* ---------- buttons ---------- */
+.btn {
+  appearance: none;
+  border: 1px solid var(--border-strong);
+  background: var(--surface);
+  color: var(--text);
+  padding: 10px 16px;
+  border-radius: var(--radius-sm);
+  font-size: 14px; font-weight: 600; font-family: inherit;
+  cursor: pointer;
+  transition: transform 0.12s ease, background 0.18s ease, border-color 0.18s ease, box-shadow 0.18s ease;
+  box-shadow: 0 1px 2px rgba(40,55,90,0.05);
+}
+.btn:hover { background: var(--surface-2); border-color: #c2cbdb; }
+.btn:active { transform: translateY(1px); }
+.btn:disabled { opacity: 0.55; cursor: default; }
+
+.btn-primary {
+  border: none; color: #fff;
+  background: linear-gradient(135deg, var(--brand), var(--brand-2));
+  box-shadow: 0 10px 22px -10px var(--brand-glow);
+}
+.btn-primary:hover { filter: brightness(1.05); background: linear-gradient(135deg, var(--brand), var(--brand-2)); }
+
+.btn-ghost { background: transparent; border-color: var(--border); box-shadow: none; }
+.btn-ghost:hover { background: var(--surface-2); }
+
+.btn-danger { border: 1px solid var(--danger-border); background: #fff; color: #d9382f; padding: 7px 13px; font-size: 13px; box-shadow: none; }
+.btn-danger:hover { background: var(--danger-bg); }
+
+.btn-icon { width: 42px; height: 42px; padding: 0; display: grid; place-items: center; font-size: 18px; border-radius: 12px; }
+.btn-sm { padding: 7px 13px; font-size: 13px; }
+
+/* ---------- cards ---------- */
+.card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 22px;
+  margin-top: 20px;
+  box-shadow: var(--shadow);
+}
+.card h3 { margin: 0 0 4px; font-size: 16px; font-weight: 700; display: flex; align-items: center; gap: 8px; }
+.card .hint { margin: 0 0 16px; color: var(--text-dim); font-size: 13px; }
+
+/* ---------- alerts / meta ---------- */
+.alert {
+  background: var(--danger-bg); border: 1px solid var(--danger-border);
+  color: #b42318; padding: 12px 16px; border-radius: var(--radius-sm);
+  margin-bottom: 16px; font-size: 14px;
+}
+.synced { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; color: var(--text-dim); font-size: 12.5px; margin-bottom: 18px; }
+.dot { width: 7px; height: 7px; border-radius: 50%; background: #16a34a; box-shadow: 0 0 0 3px rgba(22, 163, 74, 0.18); }
+
+/* ---------- month nav ---------- */
+.monthnav { display: flex; align-items: center; justify-content: center; gap: 18px; margin: 6px 0 16px; }
+.monthnav h2 { margin: 0; min-width: 230px; text-align: center; font-size: 20px; font-weight: 700; letter-spacing: -0.02em; }
+
+/* ---------- calendar (desktop grid) ---------- */
+.cal-card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 16px; box-shadow: var(--shadow); }
+.cal-grid { display: grid; grid-template-columns: repeat(7, 1fr); gap: 8px; }
+.cal-dow { text-align: center; color: var(--text-faint); font-size: 11px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; padding: 2px 0 6px; }
+
+.cell {
+  min-height: 98px; border-radius: 13px; padding: 9px; font-size: 12px;
+  border: 1px solid var(--free-border); background: var(--free);
+  display: flex; flex-direction: column; gap: 5px;
+  transition: border-color 0.18s ease, box-shadow 0.18s ease;
+}
+.cell.empty { background: transparent; border: none; }
+.cell.partial { background: var(--partial-bg); border-color: var(--partial-border); }
+.cell.full { background: var(--full-bg); border-color: var(--full-border); }
+.cell.over { background: var(--danger-bg); border-color: var(--danger-border); }
+.cell.today { box-shadow: inset 0 0 0 2px var(--brand); }
+
+.cell-head { display: flex; align-items: center; justify-content: space-between; }
+.cell-day { font-weight: 700; font-size: 13px; color: var(--text); }
+.cell-count { font-size: 10.5px; color: var(--text-dim); font-weight: 700; }
+.cell-dow-inline { display: none; }
+
+.pill {
+  display: inline-flex; align-items: center; gap: 4px; max-width: 100%;
+  padding: 3px 8px; border-radius: 999px; font-size: 10.5px; font-weight: 600;
+  white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+  background: var(--surface-3); color: var(--text-dim);
+}
+.pill.airbnb { background: #ffe9ee; color: #be123c; }
+.pill.manual { background: #e2f3ff; color: #0369a1; }
+.pill.block { background: #eef1f6; color: #475569; cursor: pointer; }
+.pill.block:hover { background: #e2e7f0; }
+.pill.block.empty-note { border: 1px dashed #b9c2d4; background: transparent; color: #6b7689; }
+.over-tag { color: #c0241b; font-weight: 800; font-size: 10.5px; }
+
+/* ---------- legend ---------- */
+.legend { display: flex; flex-wrap: wrap; gap: 16px; align-items: center; margin-top: 16px; font-size: 13px; color: var(--text-dim); }
+.legend-item { display: inline-flex; align-items: center; gap: 7px; }
+.swatch { width: 14px; height: 14px; border-radius: 4px; display: inline-block; border: 1px solid var(--border-strong); }
+
+/* ---------- forms ---------- */
+.field { display: flex; flex-direction: column; gap: 6px; }
+.field > span { font-size: 11.5px; font-weight: 700; color: var(--text-dim); letter-spacing: 0.02em; }
+.input, .select, .textarea {
+  background: var(--surface); color: var(--text);
+  border: 1px solid var(--border-strong); border-radius: 11px;
+  padding: 10px 12px; font-size: 15px; font-family: inherit;
+  transition: border-color 0.16s ease, box-shadow 0.16s ease;
+}
+.input:focus, .select:focus, .textarea:focus { outline: none; border-color: var(--brand); box-shadow: 0 0 0 3px var(--brand-soft); }
+.textarea { width: 100%; resize: vertical; }
+.form-row { display: flex; gap: 12px; flex-wrap: wrap; align-items: flex-end; }
+.form-note { color: var(--text-faint); font-size: 12px; margin: 12px 0 0; }
+
+/* ---------- tables ---------- */
+.table { width: 100%; border-collapse: separate; border-spacing: 0; font-size: 13.5px; }
+.table th { text-align: left; color: var(--text-faint); font-weight: 700; font-size: 11px; text-transform: uppercase; letter-spacing: 0.04em; padding: 0 12px 10px; }
+.table td { padding: 13px 12px; border-top: 1px solid var(--border); vertical-align: middle; }
+.table tr:hover td { background: var(--surface-2); }
+.mono { font-variant-numeric: tabular-nums; font-feature-settings: "tnum"; }
+.code { font-family: "SF Mono", ui-monospace, monospace; font-size: 12.5px; letter-spacing: 0.02em; color: var(--text); }
+.badge { display: inline-block; padding: 2px 8px; border-radius: 999px; font-size: 11px; font-weight: 700; }
+.badge.warn { background: #fff2d6; color: #b45309; }
+.muted { color: var(--text-faint); }
+
+/* ---------- modal ---------- */
+.modal-overlay {
+  position: fixed; inset: 0; background: rgba(26, 34, 51, 0.4);
+  backdrop-filter: blur(4px); display: flex; align-items: center; justify-content: center;
+  z-index: 50; padding: 16px; animation: fade 0.16s ease;
+}
+.modal {
+  width: 440px; max-width: 100%; background: var(--surface);
+  border: 1px solid var(--border); border-radius: 18px; padding: 24px;
+  box-shadow: var(--shadow-lg); animation: pop 0.18s cubic-bezier(0.2, 0.8, 0.3, 1);
+}
+.modal h3 { margin: 0 0 4px; font-size: 17px; }
+.modal-actions { display: flex; gap: 10px; margin-top: 16px; justify-content: flex-end; }
+
+@keyframes fade { from { opacity: 0; } to { opacity: 1; } }
+@keyframes pop { from { opacity: 0; transform: translateY(8px) scale(0.98); } to { opacity: 1; transform: none; } }
+
+/* =========================================================
+   MOBILE  — calendar grid becomes a vertical agenda; the
+   week-grid would be unreadable at phone widths.
+   ========================================================= */
+@media (max-width: 820px) {
+  .shell { padding: 18px 14px 64px; }
+  .topbar { margin-bottom: 18px; }
+  .brand-mark { width: 42px; height: 42px; font-size: 20px; }
+  .brand h1 { font-size: 18px; }
+  .monthnav { gap: 12px; }
+  .monthnav h2 { min-width: 0; flex: 1; font-size: 18px; }
+
+  /* Keep the 7-column grid on mobile — just make it compact enough to fit.
+     Text pills don't fit in a phone-width cell, so bookings collapse to small
+     colored dots; full details stay in the tables below + the tap editor. */
+  .cal-card { padding: 8px; }
+  .cal-grid { gap: 4px; }
+  .cal-dow { font-size: 9px; padding: 2px 0 4px; }
+
+  .cell {
+    min-height: 56px; padding: 4px 3px; gap: 3px; border-radius: 9px;
+    align-items: stretch;
+  }
+  .cell-head { flex-direction: column; align-items: center; gap: 1px; }
+  .cell-dow-inline { display: none; }
+  .cell-day { font-size: 13px; text-align: center; }
+  .cell-count { font-size: 9px; }
+
+  /* hide the text pills; show source-marker glyphs instead */
+  .pill { display: none; }
+  .over-tag { font-size: 0; }            /* keep the red bg from .over; hide text */
+  .over-tag::after { content: "!"; font-size: 11px; color: #c0241b; font-weight: 800; }
+
+  .dots { display: flex; justify-content: center; gap: 2px; flex-wrap: wrap; line-height: 1; }
+  .mark { font-size: 11px; line-height: 1; }
+  .mark.block { filter: grayscale(0.2); }
+
+  /* forms stack full-width */
+  .form-row { flex-direction: column; align-items: stretch; gap: 12px; }
+  .form-row .field { width: 100%; }
+  .form-row .btn { width: 100%; }
+
+  /* tables: scroll horizontally INSIDE the card (not the page) */
+  .table-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+  .table { min-width: 440px; }
+
+  .card { padding: 16px; }
+  .btn { padding: 11px 16px; }   /* bigger tap targets */
+}
+
+@media (max-width: 380px) {
+  .cell { min-height: 50px; padding: 3px 2px; }
+  .cell-day { font-size: 12px; }
+  .cal-grid { gap: 3px; }
+}
+
+/* desktop: the dot row is redundant (we show full pills) — hide it */
+@media (min-width: 821px) {
+  .dots { display: none; }
+}

@@ -1,0 +1,20 @@
+# dependencies
+node_modules
+
+# next.js
+.next
+out
+build
+
+# env / secrets
+.env
+.env.local
+.env*.local
+
+# local data store (contains your bookings)
+data/store.json
+
+# misc
+.DS_Store
+*.log
+npm-debug.log*
